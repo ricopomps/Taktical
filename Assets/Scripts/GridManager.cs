@@ -4,10 +4,16 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private int _width, _height;
-    [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private Tile _grassTile, _mountainTile;
     [SerializeField] private Transform _cam;
 
-    private Dictionary<Vector2, Tile> _tiles;
+    private Dictionary<Vector2, Tile> _tiles = new();
+
+    Tile GetRandomTile()
+    {
+        var randomTile = Random.Range(0, 6) == 3 ? _mountainTile : _grassTile;
+        return randomTile;
+    }
 
     void GenerateGrid()
     {
@@ -15,11 +21,10 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < _height; y++)
             {
-                var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
+                var spawnedTile = Instantiate(GetRandomTile(), new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
 
-                var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                spawnedTile.Init(isOffset);
+                spawnedTile.Init(x, y);
 
                 _tiles[new Vector2(x, y)] = spawnedTile;
             }

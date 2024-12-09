@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 16
   _height: 9
-  _tilePrefab: {fileID: 7259459073907367472, guid: 00564cf8dc0c10a4ba46680b91f637f9, type: 3}
+  _tilePrefab: {fileID: 8851118785711659282, guid: 049d791de8bc9b844b86015bfcb86236, type: 3}
   _cam: {fileID: 519420032}
 --- !u!4 &64417630
 Transform:
