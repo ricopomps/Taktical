@@ -2,6 +2,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Unit", menuName = "Scriptable Unit")]
 public class ScriptableUnit : ScriptableObject
 {
+    public Faction Faction;
+    public BaseUnit UnitPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,5 +20,5 @@ public class ScriptableUnit : ScriptableObject
 public enum Faction
 {
     Hero = 0,
-    Enemiy = 1
+    Enemy = 1
 }

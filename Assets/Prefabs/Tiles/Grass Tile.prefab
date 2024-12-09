@@ -77,10 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3704e919db0b9354f8ca938cd6e7115a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0.4392157, g: 0.7411765, b: 0.36862746, a: 1}
-  _offsetColor: {r: 0.4, g: 0.6901961, b: 0.33333334, a: 1}
   _rendered: {fileID: 8227061874572152571}
   _highlight: {fileID: 8834224480147929791}
+  _isWalkable: 1
+  OccupiedUnit: {fileID: 0}
+  _baseColor: {r: 0.4392157, g: 0.7411765, b: 0.36862746, a: 1}
+  _offsetColor: {r: 0.4, g: 0.6901961, b: 0.33333334, a: 1}
 --- !u!212 &8227061874572152571 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1636597324997821387, guid: 00564cf8dc0c10a4ba46680b91f637f9, type: 3}

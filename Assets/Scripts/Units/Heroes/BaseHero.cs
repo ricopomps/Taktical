@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class BaseUnit : MonoBehaviour
+public class BaseHero : BaseUnit
 {
-    public Tile OccupiedTile;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
