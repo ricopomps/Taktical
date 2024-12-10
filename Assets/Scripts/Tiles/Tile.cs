@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class Tile : MonoBehaviour
 {
+    public string TileName;
     [SerializeField] protected SpriteRenderer _rendered;
     [SerializeField] private GameObject _highlight;
     [SerializeField] private bool _isWalkable;
@@ -18,21 +19,12 @@ public abstract class Tile : MonoBehaviour
     void OnMouseEnter()
     {
         _highlight.SetActive(true);
+        MenuManager.Instance.ShowTileInfo(this);
     }
     void OnMouseExit()
     {
         _highlight.SetActive(false);
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        MenuManager.Instance.ShowTileInfo(null);
     }
 
     void OnMouseDown()
@@ -41,8 +33,6 @@ public abstract class Tile : MonoBehaviour
 
         if (OccupiedUnit is not null)
         {
-            print(OccupiedUnit);
-            print(OccupiedUnit.Faction);
             if (OccupiedUnit.Faction == Faction.Hero)
             {
                 UnitManager.Instance.SetSelectedHero((BaseHero)OccupiedUnit);
@@ -53,6 +43,7 @@ public abstract class Tile : MonoBehaviour
                 {
                     var enemy = (BaseEnemy)OccupiedUnit;
                     Destroy(enemy.gameObject);
+                    OccupiedUnit = null;
                     UnitManager.Instance.SetSelectedHero(null);
                 }
             }
@@ -60,7 +51,7 @@ public abstract class Tile : MonoBehaviour
         }
         else
         {
-            if (UnitManager.Instance.SelectedHero is not null)
+            if (UnitManager.Instance.SelectedHero is not null && Walkable)
             {
                 SetUnit(UnitManager.Instance.SelectedHero);
                 UnitManager.Instance.SetSelectedHero(null);

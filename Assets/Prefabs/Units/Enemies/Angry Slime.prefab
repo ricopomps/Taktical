@@ -100,5 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87c86708dfda0744ab24a8409a4f83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Angry Slime
   OccupiedTile: {fileID: 0}
   Faction: 1
