@@ -3,6 +3,7 @@ using UnityEngine;
 public class BaseUnit : MonoBehaviour
 {
     public Tile OccupiedTile;
+    public Faction Faction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

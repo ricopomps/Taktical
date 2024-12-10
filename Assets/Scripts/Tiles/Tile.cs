@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Tile : MonoBehaviour
@@ -32,6 +33,39 @@ public abstract class Tile : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void OnMouseDown()
+    {
+        if (GameManager.Instance.GameState != GameState.HeroesTurn) return;
+
+        if (OccupiedUnit is not null)
+        {
+            print(OccupiedUnit);
+            print(OccupiedUnit.Faction);
+            if (OccupiedUnit.Faction == Faction.Hero)
+            {
+                UnitManager.Instance.SetSelectedHero((BaseHero)OccupiedUnit);
+            }
+            else
+            {
+                if (UnitManager.Instance.SelectedHero is not null)
+                {
+                    var enemy = (BaseEnemy)OccupiedUnit;
+                    Destroy(enemy.gameObject);
+                    UnitManager.Instance.SetSelectedHero(null);
+                }
+            }
+
+        }
+        else
+        {
+            if (UnitManager.Instance.SelectedHero is not null)
+            {
+                SetUnit(UnitManager.Instance.SelectedHero);
+                UnitManager.Instance.SetSelectedHero(null);
+            }
+        }
     }
 
     public void SetUnit(BaseUnit unit)

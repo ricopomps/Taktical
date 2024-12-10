@@ -6,6 +6,7 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager Instance;
     private List<ScriptableUnit> _units;
+    public BaseHero SelectedHero;
     void Awake()
     {
         Instance = this;
@@ -48,5 +49,10 @@ public class UnitManager : MonoBehaviour
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
     {
         return (T)_units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
+    }
+
+    public void SetSelectedHero(BaseHero hero)
+    {
+        SelectedHero = hero;
     }
 }
